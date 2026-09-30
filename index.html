@@ -41,22 +41,6 @@
     font-size:14px; font-weight:600;
   }
 
-  .filters {
-    display:flex; gap:8px; padding:8px 16px 16px; overflow-x:auto;
-  }
-  .filters::-webkit-scrollbar { display:none; }
-  .filter {
-    flex-shrink:0; padding:8px 16px; border-radius:20px;
-    background:#e5e5ea; border:none; font-size:15px; font-weight:500; color:#1c1c1e;
-  }
-  .filter.active { background:#1c1c1e; color:#fff; }
-  .filter .badge-inline {
-    display:inline-flex; align-items:center; justify-content:center;
-    background:#EF3124; color:#fff; font-size:11px; font-weight:700;
-    min-width:18px; height:18px; border-radius:9px;
-    margin-left:6px; padding:0 5px;
-  }
-
   .section-label { padding:14px 16px 8px; font-size:17px; font-weight:600; }
 
   .card {
@@ -94,7 +78,6 @@
     margin:8px 16px;
   }
 
-  /* ==== ПЛАТЕЖИ ==== */
   .search {
     display:flex; align-items:center; gap:10px;
     margin:0 16px 12px; padding:14px 16px;
@@ -124,7 +107,6 @@
   .pay-item .ic { width:26px; text-align:center; font-size:20px; }
   .pay-item .arr { margin-left:auto; color:#c7c7cc; font-size:18px; }
 
-  /* ==== ВЫГОДА ==== */
   .cashback-banner {
     background:#DCE9F7; padding:16px;
     display:flex; justify-content:space-between; align-items:center;
@@ -158,7 +140,6 @@
   }
   .tile .t-desc { font-size:14px; color:#8e8e93; }
 
-  /* ==== ИСТОРИЯ ==== */
   .date-label { padding:14px 16px 6px; font-size:13px; color:#8e8e93; letter-spacing:0.3px; }
   .tx-list { background:#fff; margin:0 16px 14px; border-radius:16px; overflow:hidden; }
   .tx { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border-bottom:1px solid #f2f2f7; }
@@ -182,7 +163,6 @@
     font-size:13px; color:#1c1c1e; display:inline-block;
   }
 
-  /* ==== МЕНЮ ==== */
   .tabbar {
     position:fixed; bottom:0; left:0; right:0;
     background:rgba(255,255,255,0.95);
@@ -208,10 +188,34 @@
   }
   .heart { color:#EF3124; }
 
-  /* Экран "О кредите" */
   .info-item { padding:16px; }
   .info-item .lbl { font-size:14px; color:#8e8e93; margin-bottom:4px; }
   .info-item .vl { font-size:18px; font-weight:500; }
+
+  .pay-row {
+    background:#fff; margin:0 16px 8px;
+    border-radius:14px; padding:14px 16px;
+  }
+  .pay-row .head {
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .pay-row .head .left { display:flex; align-items:center; gap:10px; }
+  .pay-row .check {
+    width:24px; height:24px; border-radius:50%;
+    background:#34c759; color:#fff; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pay-row .check.grey { background:#c7c7cc; }
+  .pay-row .date-txt { font-size:16px; font-weight:500; }
+  .pay-row .sum-txt { font-size:16px; font-weight:700; display:flex; align-items:center; gap:6px; }
+  .pay-row .det { margin-top:10px; display:none; }
+  .pay-row .det.open { display:block; }
+  .pay-row .det .dr {
+    display:flex; justify-content:space-between; padding:6px 0;
+    font-size:14px; color:#8e8e93;
+  }
+  .pay-row .det .dr .right { color:#1c1c1e; }
+  .pay-row .det .dr .right.green { color:#34c759; font-weight:600; }
 </style>
 </head>
 <body>
@@ -225,14 +229,6 @@
       <div class="chev">›</div>
     </div>
     <button class="friend-btn">🍺 За друга</button>
-  </div>
-
-  <div class="filters">
-    <button class="filter active">Всё</button>
-    <button class="filter">Карты</button>
-    <button class="filter">Накопления</button>
-    <button class="filter">Счета</button>
-    <button class="filter">Кредиты</button>
   </div>
 
   <div class="section-label">Карты</div>
@@ -257,11 +253,13 @@
   <div class="card"><div class="label">Текущий счёт USD</div><div class="val">0 $</div></div>
 
   <div class="section-label">Кредиты</div>
-  <div class="card" onclick="goTo('credit')">
-    <div class="label">Кредит наличными</div>
-    <div class="val" id="creditTotal">1 853 000 ₽</div>
-    <div class="progress"><div id="creditProgressHome" style="width:33%"></div></div>
-    <button class="card-btn" onclick="event.stopPropagation(); alert('Платёж 13 числа — 58 104 ₽')">
+  <div class="card">
+    <div onclick="goTo('credit')">
+      <div class="label">Кредит наличными</div>
+      <div class="val" id="creditTotal">1 853 000 ₽</div>
+      <div class="progress"><div id="creditProgressHome" style="width:22%"></div></div>
+    </div>
+    <button class="card-btn" onclick="goTo('schedule')">
       Платёж 13 числа — 58 104 ₽ <span class="arr">›</span>
     </button>
   </div>
@@ -284,9 +282,9 @@
 
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;">
     <div style="font-size:13px;color:#8e8e93;margin-bottom:4px;">Выплачено</div>
-    <div style="font-size:17px;font-weight:600;" id="paidAmount">219 310,69 ₽</div>
-    <div class="progress"><div id="creditProgress" style="width:9%"></div></div>
-    <div style="font-size:14px;color:#8e8e93;margin-top:8px;" id="paidCount">Внесено 3 платежей из 36</div>
+    <div style="font-size:17px;font-weight:600;" id="paidAmount">87 220,00 ₽</div>
+    <div class="progress"><div id="creditProgress" style="width:22%"></div></div>
+    <div style="font-size:14px;color:#8e8e93;margin-top:8px;" id="paidCount">Внесено 8 платежей из 36</div>
   </div>
 
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;">
@@ -304,7 +302,7 @@
 
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;display:flex;align-items:center;gap:10px;" onclick="goTo('schedule')">
     <div style="width:22px;height:22px;border-radius:50%;background:#c7c7cc;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;">🕐</div>
-    <div style="flex:1;">История операций</div>
+    <div style="flex:1;">История платежей</div>
     <div style="color:#8e8e93;">›</div>
   </div>
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;display:flex;align-items:center;gap:10px;" onclick="goTo('aboutCredit')">
@@ -355,15 +353,9 @@
 <!-- ================== ГРАФИК ================== -->
 <div id="schedule" class="page">
   <div class="topbar" style="justify-content:space-between;">
-    <button class="back-btn" style="margin:0;" onclick="goTo('credit')">‹</button>
+    <button class="back-btn" style="margin:0;" onclick="goTo('home')">‹</button>
     <div style="font-size:18px;font-weight:600;">График платежей</div>
     <button style="background:none;border:none;font-size:20px;">⬇</button>
-  </div>
-  <div class="filters">
-    <button class="filter">2025</button>
-    <button class="filter active">2026</button>
-    <button class="filter">2027</button>
-    <button class="filter">2028</button>
   </div>
   <div id="paymentsList"></div>
 </div>
@@ -371,19 +363,11 @@
 <!-- ================== ПЛАТЕЖИ ================== -->
 <div id="payments" class="page">
   <div class="topbar">
-    <div class="user">
-      <div class="avatar">👤</div>
-      <div class="username">Платежи</div>
-    </div>
-    <div class="topbar-icons">
-      <button class="round-btn">✨</button>
-      <button class="round-btn">▦</button>
-    </div>
+    <div class="user"><div class="avatar">👤</div><div class="username">Платежи</div></div>
+    <div class="topbar-icons"><button class="round-btn">✨</button><button class="round-btn">▦</button></div>
   </div>
-
   <div class="banner">😍 Все платежи без комиссии</div>
   <div class="search"><span>🔍</span><input placeholder="Найти поставщика"></div>
-
   <div class="pay-group">
     <button class="pay-item" onclick="alert('Мобильная связь')"><span class="ic">📱</span><span>Мобильная связь</span><span class="arr">›</span></button>
     <button class="pay-item" onclick="alert('Интернет, телефон, ТВ')"><span class="ic">📶</span><span>Интернет, телефон, ТВ</span><span class="arr">›</span></button>
@@ -398,105 +382,54 @@
     <button class="pay-item" onclick="alert('Благотворительность')"><span class="ic">🤝</span><span>Благотворительность</span><span class="arr">›</span></button>
     <button class="pay-item" onclick="alert('Покупки и досуг')"><span class="ic">🛍</span><span>Покупки и досуг</span><span class="arr">›</span></button>
   </div>
-
   <div class="section-label">Условия</div>
   <div class="pay-group">
     <button class="pay-item" onclick="alert('Тарифы')"><span class="ic">📄</span><span>Тарифы</span><span class="arr">›</span></button>
     <button class="pay-item" onclick="alert('Лимиты')"><span class="ic">🚫</span><span>Лимиты</span><span class="arr">›</span></button>
   </div>
-
   <button class="big-btn" style="background:#f2f2f7;color:#1c1c1e;" onclick="alert('Настройки платежей')">⚙️ Настройки платежей и переводов</button>
 </div>
 
 <!-- ================== ВЫГОДА ================== -->
 <div id="benefit" class="page">
   <div class="topbar">
-    <div class="user">
-      <div class="avatar">👤</div>
-      <div class="username">Выгода</div>
-    </div>
+    <div class="user"><div class="avatar">👤</div><div class="username">Выгода</div></div>
     <div class="topbar-icons"><button class="round-btn">✨</button></div>
   </div>
-
-  <div class="filters">
-    <button class="filter active">Всё</button>
-    <button class="filter">Предложения <span class="badge-inline">6</span></button>
-    <button class="filter">Кэшбэк и сервисы</button>
-  </div>
-
   <div class="section-label">Кэшбэк</div>
   <div class="h-scroll">
     <div class="h-card" style="padding:0;overflow:hidden;">
-      <div style="padding:14px 16px;">
-        <div class="lbl">Баланс ⓘ</div>
-        <div class="num">0 ₽</div>
-      </div>
-      <div class="cashback-banner">
-        <span>Начислим 10 октября <b>163 ₽</b></span>
-        <span class="arr">›</span>
-      </div>
+      <div style="padding:14px 16px;"><div class="lbl">Баланс ⓘ</div><div class="num">0 ₽</div></div>
+      <div class="cashback-banner"><span>Начислим 10 октября <b>163 ₽</b></span><span class="arr">›</span></div>
     </div>
     <div class="h-card" style="padding:0;overflow:hidden;">
-      <div style="padding:14px 16px;">
-        <div class="lbl">Баланс ⓘ</div>
-        <div class="num">0 ₽</div>
-      </div>
-      <div class="cashback-banner">
-        <span>Начислим 10 октября <b>163 ₽</b></span>
-        <span class="arr">›</span>
-      </div>
+      <div style="padding:14px 16px;"><div class="lbl">Баланс ⓘ</div><div class="num">0 ₽</div></div>
+      <div class="cashback-banner"><span>Начислим 10 октября <b>163 ₽</b></span><span class="arr">›</span></div>
     </div>
   </div>
-
   <div class="promo" onclick="alert('Моя выгода')">
     <div class="emoji">😊</div>
     <div class="txt">Кэшбэк от банка, доходы от накоплений и рекомендаций — в разделе <b>Моя выгода</b></div>
     <div class="arr">›</div>
   </div>
-
   <div class="h-scroll">
-    <div class="h-card">
-      <div class="t-title">Категории в октябре</div>
-      <div class="emoji">🍔 🛍 🎁</div>
-    </div>
-    <div class="h-card">
-      <div class="num">3%</div>
-      <div class="desc">Одежда и обувь в октябре</div>
-      <div class="emoji">👟</div>
-    </div>
-    <div class="h-card">
-      <div class="num">5%</div>
-      <div class="desc">Рестораны в октябре</div>
-      <div class="emoji">🍽</div>
-    </div>
+    <div class="h-card"><div class="t-title">Категории в октябре</div><div class="emoji">🍔 🛍 🎁</div></div>
+    <div class="h-card"><div class="num">3%</div><div class="desc">Одежда и обувь в октябре</div><div class="emoji">👟</div></div>
+    <div class="h-card"><div class="num">5%</div><div class="desc">Рестораны в октябре</div><div class="emoji">🍽</div></div>
   </div>
-
   <div class="section-label">Ещё больше выгоды</div>
   <div class="tile-row">
-    <button class="tile" onclick="alert('Предложения партнёров')">
-      <div class="t-title">Предложения партнёров <span class="t-badge">7</span></div>
-      <div class="t-desc">Скидки и подарки</div>
-    </button>
-    <button class="tile" onclick="alert('Лучший кэшбэк')">
-      <div class="t-title">Лучший кэшбэк</div>
-      <div class="t-desc">Выбрать категории</div>
-    </button>
+    <button class="tile" onclick="alert('Предложения партнёров')"><div class="t-title">Предложения партнёров <span class="t-badge">7</span></div><div class="t-desc">Скидки и подарки</div></button>
+    <button class="tile" onclick="alert('Лучший кэшбэк')"><div class="t-title">Лучший кэшбэк</div><div class="t-desc">Выбрать категории</div></button>
   </div>
 </div>
 
 <!-- ================== ИСТОРИЯ ================== -->
 <div id="history" class="page">
   <div class="topbar">
-    <div class="user">
-      <div class="avatar">👤</div>
-      <div class="username">История</div>
-    </div>
-    <div class="topbar-icons">
-      <button class="round-btn">✨</button>
-      <button class="round-btn">⬇</button>
-    </div>
+    <div class="user"><div class="avatar">👤</div><div class="username">История</div></div>
+    <div class="topbar-icons"><button class="round-btn">✨</button><button class="round-btn">⬇</button></div>
   </div>
-
   <div id="historyList"></div>
 </div>
 
@@ -531,44 +464,22 @@ const DATA = {
   userName: "Анна",
   mainBalance: 1661.37,
   mirBalance: 0,
-  creditTotal: 1853000,        // Остаток долга
-  creditInitial: 2072310.69,   // Изначальная сумма кредита
-  paidCount: 3,                // Внесено платежей
-  totalCount: 36,              // Всего платежей
-  paymentSum: 58104,           // Ежемесячный платёж
-  paymentDay: 13,
+  creditTotal: 1853000,
+  paidCount: 8,
+  totalCount: 36,
+  paymentSum: 58104,
   topUpAmount: 56442.63,
-  rate: 0.24,                  // 24% годовых
-  // График: для каждого платежа указываем, сколько ушло в тело долга и сколько в проценты
   schedule: [
-    { month:"октября",  year:2026, paid:false, principal:0,      interest:58104 },
-    { month:"ноября",   year:2026, paid:false, principal:0,      interest:58104 },
-    { month:"декабря",  year:2026, paid:false, principal:0,      interest:58104 },
-    { month:"января",   year:2027, paid:false, principal:37060,  interest:21044 },
-    { month:"февраля",  year:2027, paid:false, principal:37801,  interest:20303 },
-    { month:"марта",    year:2027, paid:false, principal:38557,  interest:19547 },
-    { month:"апреля",   year:2027, paid:false, principal:39328,  interest:18776 },
-    { month:"мая",      year:2027, paid:false, principal:40115,  interest:17989 },
-    { month:"июня",     year:2027, paid:false, principal:40917,  interest:17187 },
-    { month:"июля",     year:2027, paid:false, principal:41735,  interest:16369 },
-    { month:"августа",  year:2027, paid:false, principal:42570,  interest:15534 },
-    { month:"сентября", year:2027, paid:false, principal:43421,  interest:14683 },
-    { month:"октября",  year:2027, paid:false, principal:44290,  interest:13814 },
-    { month:"ноября",   year:2027, paid:false, principal:45176,  interest:12928 },
-    { month:"декабря",  year:2027, paid:false, principal:46079,  interest:12025 },
-    { month:"января",   year:2028, paid:false, principal:47001,  interest:11103 },
-    { month:"февраля",  year:2028, paid:false, principal:47941,  interest:10163 },
-    { month:"марта",    year:2028, paid:false, principal:48900,  interest:9204 },
-    { month:"апреля",   year:2028, paid:false, principal:49878,  interest:8226 },
-    { month:"мая",      year:2028, paid:false, principal:50876,  interest:7228 },
-    { month:"июня",     year:2028, paid:false, principal:51894,  interest:6210 },
-    { month:"июля",     year:2028, paid:false, principal:52932,  interest:5172 },
-    { month:"августа",  year:2028, paid:false, principal:53991,  interest:4113 },
-    { month:"сентября", year:2028, paid:false, principal:55071,  interest:3033 },
-    { month:"октября",  year:2028, paid:false, principal:56173,  interest:1931 },
-    { month:"ноября",   year:2028, paid:false, principal:57297,  interest:807 }
+    { date:"13 февраля 2026", paid:true,  principal:7230.00,  interest:50874.00 },
+    { date:"13 марта 2026",   paid:true,  principal:7930.00,  interest:50174.00 },
+    { date:"13 апреля 2026",  paid:true,  principal:8660.00,  interest:49444.00 },
+    { date:"13 мая 2026",     paid:true,  principal:9420.00,  interest:48684.00 },
+    { date:"13 июня 2026",    paid:true,  principal:10210.00, interest:47894.00 },
+    { date:"13 июля 2026",    paid:true,  principal:11030.00, interest:47074.00 },
+    { date:"13 августа 2026", paid:true,  principal:11880.00, interest:46224.00 },
+    { date:"13 сентября 2026",paid:true,  principal:12760.00, interest:45344.00 },
+    { date:"13 октября 2026", paid:false, principal:13670.00, interest:44434.00 }
   ],
-  // История операций: с 01.01.2026 по 02.10.2026
   history: [
     { date:"2 ОКТЯБРЯ", items:[
       { logo:"🥤", bg:"#F2F2F7", name:"ВкусВилл", cat:"Продукты", sum:-843.20, cash:4 },
@@ -704,11 +615,11 @@ const DATA = {
     ]},
     { date:"21 ИЮНЯ", items:[
       { logo:"🍺", bg:"#F2F2F7", name:"Разливной", cat:"Кафе и рестораны", sum:-1231.37, cash:12 },
-      { logo:"⛽", bg:"#F2F2F7", name:"Газпромнефть", cat:"АЗС", sum:-1000.75, cash:10 }
+      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
     ]},
     { date:"18 ИЮНЯ", items:[
       { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:23000 },
-      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-1404.03, cash:14 }
     ]},
     { date:"14 ИЮНЯ", items:[
       { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-1404.03, cash:14 },
@@ -893,6 +804,7 @@ function render() {
   document.getElementById('mirBalance').textContent = fmt(DATA.mirBalance);
   document.getElementById('creditTotal').textContent = fmt(DATA.creditTotal, 0);
   document.getElementById('creditAmount').textContent = fmt(DATA.creditTotal, 0);
+  document.getElementById('paidAmount').textContent = fmt(87220, 0);
   document.getElementById('accountBalance').textContent = fmt(DATA.mainBalance);
   document.getElementById('topUpBtn').textContent = 'Пополнить на ' + fmt(DATA.topUpAmount);
 
@@ -903,18 +815,20 @@ function render() {
 
   // График
   document.getElementById('paymentsList').innerHTML = DATA.schedule.map(p => `
-    <div style="background:#fff;margin:0 16px 8px;border-radius:14px;padding:14px 16px;" onclick="this.querySelector('.det').classList.toggle('open')">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:24px;height:24px;border-radius:50%;background:${p.paid ? '#34c759' : '#c7c7cc'};color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
-          <div style="font-size:16px;font-weight:500;">${DATA.paymentDay} ${p.month}</div>
+    <div class="pay-row" onclick="this.querySelector('.det').classList.toggle('open')">
+      <div class="head">
+        <div class="left">
+          <div class="check ${p.paid ? '' : 'grey'}">✓</div>
+          <div class="date-txt">${p.date}</div>
         </div>
-        <div style="font-size:16px;font-weight:700;">${fmt(DATA.paymentSum, 0)} <span style="color:#c7c7cc;">⌄</span></div>
+        <div class="sum-txt">
+          ${fmt(DATA.paymentSum, 0)} <span style="color:#c7c7cc;">⌄</span>
+        </div>
       </div>
-      <div class="det" style="display:none;margin-top:10px;">
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Основной долг</span><span style="color:#1c1c1e;">${fmt(p.principal, 0)}</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Проценты</span><span style="color:#1c1c1e;">${fmt(p.interest, 0)}</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Статус</span><span style="color:${p.paid ? '#34c759' : '#8e8e93'};font-weight:600;">${p.paid ? 'Оплачен' : 'Ожидается'}</span></div>
+      <div class="det">
+        <div class="dr"><span>Основной долг</span><span class="right">${fmt(p.principal, 0)}</span></div>
+        <div class="dr"><span>Проценты</span><span class="right">${fmt(p.interest, 0)}</span></div>
+        <div class="dr"><span>Статус</span><span class="right ${p.paid ? 'green' : ''}">${p.paid ? 'Оплачен' : 'Ожидается'}</span></div>
       </div>
     </div>
   `).join('');
@@ -925,7 +839,7 @@ function render() {
     <div class="tx-list">
       ${g.items.map(tx => `
         <div class="tx">
-          <div class="logo" style="background:${tx.bg};color:${(tx.bg === '#EF3124' || tx.bg === '#1B3A6B' || tx.bg === '#000' || tx.bg === '#B71C1C' || tx.bg === '#2E7D32' || tx.bg === '#E53935' || tx.bg === '#9C27B0' || tx.bg === '#2196F3' || tx.bg === '#FF80AB' || tx.bg === '#4CAF50' || tx.bg === '#FFC107' || tx.bg === '#F57C00') ? '#fff' : '#1c1c1e'};">${tx.logo}</div>
+          <div class="logo" style="background:${tx.bg};color:#1c1c1e;">${tx.logo}</div>
           <div class="info">
             <div class="name">${tx.name}</div>
             <div class="cat">${tx.cat}</div>
@@ -956,14 +870,6 @@ function topUp() {
   render();
   alert('Счёт пополнен на ' + fmt(DATA.topUpAmount));
 }
-
-document.querySelectorAll('.filter').forEach(f => {
-  f.addEventListener('click', () => {
-    const parent = f.parentElement;
-    parent.querySelectorAll('.filter').forEach(x => x.classList.remove('active'));
-    f.classList.add('active');
-  });
-});
 
 const style = document.createElement('style');
 style.textContent = '.det.open{display:block !important;}';
