@@ -58,7 +58,6 @@
   }
 
   .section-label { padding:14px 16px 8px; font-size:17px; font-weight:600; }
-  .section-sub { padding:0 16px 8px; font-size:14px; color:#8e8e93; }
 
   .card {
     background:#fff; margin:0 16px 10px;
@@ -117,14 +116,12 @@
   }
   .pay-item {
     display:flex; align-items:center; gap:14px;
-    padding:16px; border-bottom:1px solid #f2f2f7;
+   padding:16px; border-bottom:1px solid #f2f2f7;
     font-size:17px; background:none; border-left:none; border-right:none; border-top:none;
     width:100%; text-align:left; color:#1c1c1e;
   }
   .pay-item:last-child { border-bottom:none; }
-  .pay-item .ic {
-    width:26px; text-align:center; font-size:20px;
-  }
+  .pay-item .ic { width:26px; text-align:center; font-size:20px; }
   .pay-item .arr { margin-left:auto; color:#c7c7cc; font-size:18px; }
 
   /* ==== ВЫГОДА ==== */
@@ -133,16 +130,9 @@
     display:flex; justify-content:space-between; align-items:center;
     font-size:15px; color:#1c1c1e;
   }
-  .cashback-banner .arr { color:#1c1c1e; }
-
-  .h-scroll {
-    display:flex; gap:12px; padding:0 16px 16px; overflow-x:auto;
-  }
+  .h-scroll { display:flex; gap:12px; padding:0 16px 16px; overflow-x:auto; }
   .h-scroll::-webkit-scrollbar { display:none; }
-  .h-card {
-    flex-shrink:0; width:200px;
-    background:#fff; border-radius:16px; padding:16px;
-  }
+  .h-card { flex-shrink:0; width:200px; background:#fff; border-radius:16px; padding:16px; }
   .h-card .lbl { font-size:14px; color:#8e8e93; margin-bottom:6px; }
   .h-card .num { font-size:24px; font-weight:700; }
   .h-card .desc { font-size:13px; color:#8e8e93; margin-top:6px; }
@@ -156,13 +146,8 @@
   .promo .txt { flex:1; font-size:15px; line-height:1.3; }
   .promo .arr { color:#c7c7cc; font-size:20px; }
 
-  .tile-row {
-    display:flex; gap:12px; margin:0 16px 16px;
-  }
-  .tile {
-    flex:1; background:#fff; border-radius:16px; padding:16px; text-align:left;
-    border:none;
-  }
+  .tile-row { display:flex; gap:12px; margin:0 16px 16px; }
+  .tile { flex:1; background:#fff; border-radius:16px; padding:16px; text-align:left; border:none; }
   .tile .t-title { font-size:15px; font-weight:600; margin-bottom:6px; }
   .tile .t-badge {
     display:inline-flex; align-items:center; justify-content:center;
@@ -174,12 +159,9 @@
   .tile .t-desc { font-size:14px; color:#8e8e93; }
 
   /* ==== ИСТОРИЯ ==== */
-  .date-label { padding:14px 16px 6px; font-size:13px; color:#8e8e93; text-transform:uppercase; letter-spacing:0.3px; }
+  .date-label { padding:14px 16px 6px; font-size:13px; color:#8e8e93; letter-spacing:0.3px; }
   .tx-list { background:#fff; margin:0 16px 14px; border-radius:16px; overflow:hidden; }
-  .tx {
-    display:flex; align-items:center; gap:14px;
-    padding:14px 16px; border-bottom:1px solid #f2f2f7;
-  }
+  .tx { display:flex; align-items:flex-start; gap:14px; padding:14px 16px; border-bottom:1px solid #f2f2f7; }
   .tx:last-child { border-bottom:none; }
   .tx .logo {
     width:44px; height:44px; border-radius:50%;
@@ -200,7 +182,7 @@
     font-size:13px; color:#1c1c1e; display:inline-block;
   }
 
-  /* ==== НИЖНЕЕ МЕНЮ ==== */
+  /* ==== МЕНЮ ==== */
   .tabbar {
     position:fixed; bottom:0; left:0; right:0;
     background:rgba(255,255,255,0.95);
@@ -225,11 +207,15 @@
     padding:0 4px;
   }
   .heart { color:#EF3124; }
+
+  /* Экран "О кредите" */
+  .info-item { padding:16px; }
+  .info-item .lbl { font-size:14px; color:#8e8e93; margin-bottom:4px; }
+  .info-item .vl { font-size:18px; font-weight:500; }
 </style>
 </head>
 <body>
-
-<!-- ================== ГЛАВНЫЙ ================== -->
+ <!-- ================== ГЛАВНЫЙ ================== -->
 <div id="home" class="page active">
   <div class="topbar">
     <div class="user">
@@ -272,10 +258,10 @@
   <div class="section-label">Кредиты</div>
   <div class="card" onclick="goTo('credit')">
     <div class="label">Кредит наличными</div>
-    <div class="val" id="creditTotal">2 072 310,69 ₽</div>
-    <div class="progress"><div id="creditProgressHome" style="width:24%"></div></div>
-    <button class="card-btn" onclick="event.stopPropagation(); alert('Платёж 58 104 ₽')">
-      Платёж 13 октября — 58 104 ₽ <span class="arr">›</span>
+    <div class="val" id="creditTotal">1 853 000 ₽</div>
+    <div class="progress"><div id="creditProgressHome" style="width:33%"></div></div>
+    <button class="card-btn" onclick="event.stopPropagation(); alert('Платёж 13 числа — 58 104 ₽')">
+      Платёж 13 числа — 58 104 ₽ <span class="arr">›</span>
     </button>
   </div>
 
@@ -291,15 +277,15 @@
   <button class="back-btn" onclick="goTo('home')">‹</button>
   <div style="padding:8px 16px 0;">
     <div style="font-size:17px;font-weight:600;">Кредит наличными ✏️</div>
-    <div style="font-size:34px;font-weight:700;margin:8px 0 2px;" id="creditAmount">2 072 310,69 ₽</div>
+    <div style="font-size:34px;font-weight:700;margin:8px 0 2px;" id="creditAmount">1 853 000 ₽</div>
     <div style="font-size:14px;color:#8e8e93;">Осталось выплатить</div>
   </div>
 
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;">
     <div style="font-size:13px;color:#8e8e93;margin-bottom:4px;">Выплачено</div>
-    <div style="font-size:17px;font-weight:600;" id="paidAmount">0 ₽</div>
-    <div class="progress"><div id="creditProgress" style="width:24%"></div></div>
-    <div style="font-size:14px;color:#8e8e93;margin-top:8px;" id="paidCount">Внесено 20 платежей из 84</div>
+    <div style="font-size:17px;font-weight:600;" id="paidAmount">219 310,69 ₽</div>
+    <div class="progress"><div id="creditProgress" style="width:9%"></div></div>
+    <div style="font-size:14px;color:#8e8e93;margin-top:8px;" id="paidCount">Внесено 3 платежей из 36</div>
   </div>
 
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;">
@@ -314,18 +300,54 @@
     </div>
     <button class="big-btn red" style="margin:14px 0 0;width:100%;" onclick="topUp()" id="topUpBtn">Пополнить на 56 442,63 ₽</button>
   </div>
-
   <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;display:flex;align-items:center;gap:10px;" onclick="goTo('schedule')">
     <div style="width:22px;height:22px;border-radius:50%;background:#c7c7cc;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;">🕐</div>
     <div style="flex:1;">История операций</div>
     <div style="color:#8e8e93;">›</div>
   </div>
-  <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;display:flex;align-items:center;gap:10px;">
+  <div style="background:#f2f2f7;margin:10px 16px;padding:14px;border-radius:14px;display:flex;align-items:center;gap:10px;" onclick="goTo('aboutCredit')">
     <div style="width:22px;height:22px;border-radius:50%;background:#c7c7cc;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-style:italic;font-weight:700;">i</div>
     <div style="flex:1;">О кредите</div>
+    <div style="color:#8e8e93;">›</div>
   </div>
 
   <button class="big-btn" onclick="goTo('schedule')">График платежей</button>
+</div>
+
+<!-- ================== О КРЕДИТЕ ================== -->
+<div id="aboutCredit" class="page">
+  <div class="topbar" style="justify-content:space-between;">
+    <button class="back-btn" style="margin:0;" onclick="goTo('credit')">‹</button>
+    <div style="font-size:18px;font-weight:600;">О кредите</div>
+    <div style="width:44px;"></div>
+  </div>
+
+  <div style="background:#fff;margin:16px;border-radius:16px;">
+    <div class="info-item" style="border-bottom:1px solid #f2f2f7;">
+      <div class="lbl">Сумма кредита</div>
+      <div class="vl">2 072 310,69 ₽</div>
+    </div>
+    <div class="info-item" style="border-bottom:1px solid #f2f2f7;">
+      <div class="lbl">Ежемесячный платёж</div>
+      <div class="vl">58 104 ₽</div>
+    </div>
+    <div class="info-item" style="border-bottom:1px solid #f2f2f7;">
+      <div class="lbl">Процентная ставка</div>
+      <div class="vl">24%</div>
+    </div>
+    <div class="info-item" style="border-bottom:1px solid #f2f2f7;">
+      <div class="lbl">Срок кредита</div>
+      <div class="vl">36 месяца</div>
+    </div>
+    <div class="info-item" style="border-bottom:1px solid #f2f2f7;">
+      <div class="lbl">Дата выдачи кредита</div>
+      <div class="vl">13 января 2025</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">Номер кредитного договора</div>
+      <div class="vl">RFML8230S25011300270</div>
+    </div>
+  </div>
 </div>
 
 <!-- ================== ГРАФИК ================== -->
@@ -358,56 +380,27 @@
   </div>
 
   <div class="banner">😍 Все платежи без комиссии</div>
-
-  <div class="search">
-    <span>🔍</span>
-    <input placeholder="Найти поставщика">
-  </div>
+  <div class="search"><span>🔍</span><input placeholder="Найти поставщика"></div>
 
   <div class="pay-group">
-    <button class="pay-item" onclick="alert('Мобильная связь')">
-      <span class="ic">📱</span><span>Мобильная связь</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Интернет, телефон, ТВ')">
-      <span class="ic">📶</span><span>Интернет, телефон, ТВ</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Игры и сервисы')">
-      <span class="ic">🎮</span><span>Игры и сервисы</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Коммунальные услуги')">
-      <span class="ic">🏠</span><span>Коммунальные услуги</span><span class="arr">›</span>
-    </button>
+    <button class="pay-item" onclick="alert('Мобильная связь')"><span class="ic">📱</span><span>Мобильная связь</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Интернет, телефон, ТВ')"><span class="ic">📶</span><span>Интернет, телефон, ТВ</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Игры и сервисы')"><span class="ic">🎮</span><span>Игры и сервисы</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Коммунальные услуги')"><span class="ic">🏠</span><span>Коммунальные услуги</span><span class="arr">›</span></button>
   </div>
-
   <div class="pay-group">
-    <button class="pay-item" onclick="alert('Транспорт')">
-      <span class="ic">🚌</span><span>Транспорт</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Госуслуги')">
-      <span class="ic">🦅</span><span>Госуслуги</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Школы, вузы, детские сады')">
-      <span class="ic">🎓</span><span>Школы, вузы, детские сады</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Финансы и страхование')">
-      <span class="ic">🏛</span><span>Финансы и страхование</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Благотворительность')">
-      <span class="ic">🤝</span><span>Благотворительность</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Покупки и досуг')">
-      <span class="ic">🛍</span><span>Покупки и досуг</span><span class="arr">›</span>
-    </button>
+    <button class="pay-item" onclick="alert('Транспорт')"><span class="ic">🚌</span><span>Транспорт</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Госуслуги')"><span class="ic">🦅</span><span>Госуслуги</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Школы, вузы, детские сады')"><span class="ic">🎓</span><span>Школы, вузы, детские сады</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Финансы и страхование')"><span class="ic">🏛</span><span>Финансы и страхование</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Благотворительность')"><span class="ic">🤝</span><span>Благотворительность</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Покупки и досуг')"><span class="ic">🛍</span><span>Покупки и досуг</span><span class="arr">›</span></button>
   </div>
 
   <div class="section-label">Условия</div>
   <div class="pay-group">
-    <button class="pay-item" onclick="alert('Тарифы')">
-      <span class="ic">📄</span><span>Тарифы</span><span class="arr">›</span>
-    </button>
-    <button class="pay-item" onclick="alert('Лимиты')">
-      <span class="ic">🚫</span><span>Лимиты</span><span class="arr">›</span>
-    </button>
+    <button class="pay-item" onclick="alert('Тарифы')"><span class="ic">📄</span><span>Тарифы</span><span class="arr">›</span></button>
+    <button class="pay-item" onclick="alert('Лимиты')"><span class="ic">🚫</span><span>Лимиты</span><span class="arr">›</span></button>
   </div>
 
   <button class="big-btn" style="background:#f2f2f7;color:#1c1c1e;" onclick="alert('Настройки платежей')">⚙️ Настройки платежей и переводов</button>
@@ -420,9 +413,7 @@
       <div class="avatar">👤</div>
       <div class="username">Выгода</div>
     </div>
-    <div class="topbar-icons">
-      <button class="round-btn">✨</button>
-    </div>
+    <div class="topbar-icons"><button class="round-btn">✨</button></div>
   </div>
 
   <div class="filters">
@@ -488,7 +479,7 @@
       <div class="t-title">Лучший кэшбэк</div>
       <div class="t-desc">Выбрать категории</div>
     </button>
-  </div>
+    </div>
 </div>
 
 <!-- ================== ИСТОРИЯ ================== -->
@@ -538,39 +529,359 @@ const DATA = {
   userName: "Анна",
   mainBalance: 1661.37,
   mirBalance: 0,
-  creditTotal: 2072310.69,
-  paidAmount: 0,
-  paidCount: 20,
-  totalCount: 84,
-  nextPaymentDate: "13 октября",
-  nextPaymentSum: 58104,
-  topUpAmount: 56442.63,
+  creditTotal: 1853000,        // Остаток долга
+  creditInitial: 2072310.69,   // Изначальная сумма кредита
+  paidCount: 3,                // Внесено платежей
+  totalCount: 36,              // Всего платежей
+  paymentSum: 58104,           // Ежемесячный платёж
   paymentDay: 13,
-  paymentSum: 58104,
+  topUpAmount: 56442.63,
+  rate: 0.24,                  // 24% годовых
+  // График: для каждого платежа указываем, сколько ушло в тело долга и сколько в проценты
   schedule: [
-    { month:"января", paid:true }, { month:"февраля", paid:true },
-    { month:"марта", paid:true }, { month:"апреля", paid:true },
-    { month:"мая", paid:true }, { month:"июня", paid:false },
-    { month:"июля", paid:false }, { month:"августа", paid:false }
+    { month:"октября",  year:2026, paid:false, principal:0,      interest:58104 },
+    { month:"ноября",   year:2026, paid:false, principal:0,      interest:58104 },
+    { month:"декабря",  year:2026, paid:false, principal:0,      interest:58104 },
+    { month:"января",   year:2027, paid:false, principal:37060,  interest:21044 },
+    { month:"февраля",  year:2027, paid:false, principal:37801,  interest:20303 },
+    { month:"марта",    year:2027, paid:false, principal:38557,  interest:19547 },
+    { month:"апреля",   year:2027, paid:false, principal:39328,  interest:18776 },
+    { month:"мая",      year:2027, paid:false, principal:40115,  interest:17989 },
+    { month:"июня",     year:2027, paid:false, principal:40917,  interest:17187 },
+    { month:"июля",     year:2027, paid:false, principal:41735,  interest:16369 },
+    { month:"августа",  year:2027, paid:false, principal:42570,  interest:15534 },
+    { month:"сентября", year:2027, paid:false, principal:43421,  interest:14683 },
+    { month:"октября",  year:2027, paid:false, principal:44290,  interest:13814 },
+    { month:"ноября",   year:2027, paid:false, principal:45176,  interest:12928 },
+    { month:"декабря",  year:2027, paid:false, principal:46079,  interest:12025 },
+    { month:"января",   year:2028, paid:false, principal:47001,  interest:11103 },
+    { month:"февраля",  year:2028, paid:false, principal:47941,  interest:10163 },
+    { month:"марта",    year:2028, paid:false, principal:48900,  interest:9204 },
+    { month:"апреля",   year:2028, paid:false, principal:49878,  interest:8226 },
+    { month:"мая",      year:2028, paid:false, principal:50876,  interest:7228 },
+    { month:"июня",     year:2028, paid:false, principal:51894,  interest:6210 },
+    { month:"июля",     year:2028, paid:false, principal:52932,  interest:5172 },
+    { month:"августа",  year:2028, paid:false, principal:53991,  interest:4113 },
+    { month:"сентября", year:2028, paid:false, principal:55071,  interest:3033 },
+    { month:"октября",  year:2028, paid:false, principal:56173,  interest:1931 },
+   { month:"ноября",   year:2028, paid:false, principal:57297,  interest:807 }
   ],
+  // История операций: с 01.01.2026 по 02.10.2026
   history: [
-    {
-      date: "24 СЕНТЯБРЯ",
-      items: [
-        { logo:"✈️", bg:"#1B3A6B", name:"Аэрофлот", cat:"Путешествия", sum:-12850, cash:128 },
-        { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств…", cat:"Пополнения", sum:39000 },
-        { logo:"💊", bg:"#F2F2F7", name:"Аптека Аир", cat:"Аптеки", sum:-167.52, cash:1 },
-        { logo:"✅", bg:"#2BB673", name:"Наталья Г.", cat:"Переводы · СБП · Сбербанк", sum:-3900, note:"Перевод денежных средств" },
-        { logo:"🛒", bg:"#8BC34A", name:"IP ZULKARNEEVA O.A.", cat:"Продукты", sum:-78 },
-        { logo:"А", bg:"#EF3124", name:"Надежда Б.", cat:"Переводы · Альфа-Банк", sum:-680, note:"Перевод денежных средств" }
-      ]
-    }
+    { date:"2 ОКТЯБРЯ", items:[
+      { logo:"🥤", bg:"#F2F2F7", name:"ВкусВилл", cat:"Продукты", sum:-843.20, cash:4 },
+      { logo:"🚕", bg:"#FFDB4D", name:"Яндекс Go", cat:"Транспорт", sum:-412, cash:2 }
+    ]},
+    { date:"30 СЕНТЯБРЯ", items:[
+      { logo:"🛒", bg:"#8BC34A", name:"Перекрёсток", cat:"Продукты", sum:-1567.80, cash:8 },
+      { logo:"🍔", bg:"#E91E63", name:"Вкусно и точка", cat:"Фастфуд", sum:-389, cash:2 }
+    ]},
+    { date:"27 СЕНТЯБРЯ", items:[
+      { logo:"💊", bg:"#F2F2F7", name:"Аптека Вита", cat:"Аптеки", sum:-1240, cash:6 },
+      { logo:"🛍", bg:"#9C27B0", name:"Wildberries", cat:"Маркетплейсы", sum:-3450, cash:17 }
+    ]},
+    { date:"24 СЕНТЯБРЯ", items:[
+      { logo:"✈️", bg:"#1B3A6B", name:"Аэрофлот", cat:"Путешествия", sum:-12850, cash:128 },
+      { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:39000 },
+      { logo:"💊", bg:"#F2F2F7", name:"Аптека Аир", cat:"Аптеки", sum:-167.52, cash:1 },
+      { logo:"✅", bg:"#2BB673", name:"Наталья Г.", cat:"Переводы · СБП · Сбербанк", sum:-3900, note:"Перевод денежных средств" },
+      { logo:"🛒", bg:"#8BC34A", name:"IP ZULKARNEEVA O.A.", cat:"Продукты", sum:-78 },
+      { logo:"А", bg:"#EF3124", name:"Надежда Б.", cat:"Переводы · Альфа-Банк", sum:-680, note:"Перевод денежных средств" }
+    ]},
+    { date:"21 СЕНТЯБРЯ", items:[
+      { logo:"☕", bg:"#F2F2F7", name:"Сначала кофе", cat:"Фастфуд", sum:-260, cash:6 },
+      { logo:"🛒", bg:"#8BC34A", name:"MF VZLYOTNAYA", cat:"Продукты", sum:-373.98, cash:3 }
+    ]},
+    { date:"18 СЕНТЯБРЯ", items:[
+      { logo:"🛍", bg:"#9C27B0", name:"OZON", cat:"Маркетплейсы", sum:-2190, cash:11 },
+      { logo:"🚌", bg:"#2196F3", name:"Транспорт", cat:"Транспорт", sum:-100, cash:1 }
+    ]},
+    { date:"15 СЕНТЯБРЯ", items:[
+      { logo:"📱", bg:"#000", name:"Т2", cat:"Связь", sum:-600 },
+      { logo:"🍞", bg:"#F2F2F7", name:"Манго", cat:"Продукты", sum:-340, cash:3 }
+    ]},
+    { date:"12 СЕНТЯБРЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-407.18, cash:4 },
+      { logo:"🍺", bg:"#F2F2F7", name:"Разливной", cat:"Кафе и рестораны", sum:-1231.37, cash:12 }
+    ]},
+    { date:"09 СЕНТЯБРЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 },
+      { logo:"🚌", bg:"#2196F3", name:"Busfor.ru", cat:"Транспорт", sum:-1500, cash:15 }
+    ]},
+    { date:"06 СЕНТЯБРЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-124.95, cash:1 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-139.98, cash:1 }
+    ]},
+    { date:"02 СЕНТЯБРЯ", items:[
+      { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:23000 },
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-1404.03, cash:14 }
+    ]},
+    { date:"30 АВГУСТА", items:[
+      { logo:"⛽", bg:"#F2F2F7", name:"Газпромнефть", cat:"АЗС", sum:-1000.75, cash:10 },
+      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
+    ]},
+    { date:"27 АВГУСТА", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"IP SUKHACHEV", cat:"Фастфуд", sum:-1830, cash:54 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-185.98, cash:1 }
+    ]},
+    { date:"24 АВГУСТА", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-190.97, cash:1 },
+      { logo:"🍺", bg:"#F2F2F7", name:"LOTOK 2", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"20 АВГУСТА", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"KRESTOVSKAYA", cat:"Фастфуд", sum:-1210, cash:36 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1300, cash:13 }
+    ]},
+    { date:"17 АВГУСТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-400, cash:4 },
+      { logo:"🛒", bg:"#8BC34A", name:"Перекрёсток", cat:"Продукты", sum:-780, cash:8 }
+    ]},
+   { date:"14 АВГУСТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-700, cash:7 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 7", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"10 АВГУСТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1800, cash:90 },
+      { logo:"🚕", bg:"#FFDB4D", name:"Яндекс Go", cat:"Транспорт", sum:-312, cash:2 }
+    ]},
+    { date:"06 АВГУСТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1200, cash:12 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-990, cash:27 }
+    ]},
+    { date:"03 АВГУСТА", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"JET SET.", cat:"Прочие расходы", sum:-600 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-350, cash:3 }
+    ]},
+    { date:"31 ИЮЛЯ", items:[
+      { logo:"M", bg:"#B71C1C", name:"Магнит", cat:"Продукты", sum:-537.80, cash:5 },
+      { logo:"🚌", bg:"#FF80AB", name:"IP PULMAN D.S.", cat:"Активный отдых", sum:-700, cash:7 }
+    ]},
+    { date:"30 ИЮЛЯ", items:[
+      { logo:"5", bg:"#2E7D32", name:"Пятёрочка", cat:"Продукты", sum:-258.65, cash:2 },
+      { logo:"✅", bg:"#2BB673", name:"Перевод себе в другой банк", cat:"Переводы · СБП · Сбербанк", sum:-1500, note:"Перевод денежных средств" }
+    ]},
+    { date:"27 ИЮЛЯ", items:[
+      { logo:"☕", bg:"#F2F2F7", name:"Сначала кофе", cat:"Фастфуд", sum:-260, cash:6 },
+      { logo:"🛒", bg:"#8BC34A", name:"MF VZLYOTNAYA", cat:"Продукты", sum:-373.98, cash:3 }
+    ]},
+    { date:"24 ИЮЛЯ", items:[
+      { logo:"📱", bg:"#000", name:"Анна В.", cat:"Переводы · СБП · Т2 card", sum:278 },
+      { logo:"🚌", bg:"#2196F3", name:"Транспорт", cat:"Транспорт", sum:-100, cash:1 }
+    ]},
+    { date:"20 ИЮЛЯ", items:[
+      { logo:"🛍", bg:"#9C27B0", name:"OZON", cat:"Маркетплейсы", sum:-2190, cash:11 },
+      { logo:"📷", bg:"#E91E63", name:"FOTOKOPISTOPKADR", cat:"Хобби", sum:-370, cash:15 }
+    ]},
+    { date:"17 ИЮЛЯ", items:[
+      { logo:"💳", bg:"#D6F5E3", name:"Юрий К.", cat:"Переводы · СБП · Озон", sum:55000 },
+      { logo:"🏠", bg:"#4CAF50", name:"Лемана ПРО", cat:"Дом и ремонт", sum:-246, cash:2 }
+    ]},
+    { date:"13 ИЮЛЯ", items:[
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-199.11, cash:2 },
+      { logo:"🛍", bg:"#9C27B0", name:"OZON", cat:"Маркетплейсы", sum:-393, cash:2, note:"Перевод денежных средств" }
+    ]},
+    { date:"09 ИЮЛЯ", items:[
+      { logo:"👑", bg:"#B71C1C", name:"Ермолино", cat:"Продукты", sum:-608.89, cash:6 },
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-407.18, cash:4 }
+    ]},
+    { date:"06 ИЮЛЯ", items:[
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-185.98, cash:1 },
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-50 }
+    ]},
+    { date:"02 ИЮЛЯ", items:[
+      { logo:"🚗", bg:"#4CAF50", name:"IIP LOBANOVSKAYA L...", cat:"Автоуслуги", sum:-2800, cash:28 },
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 }
+    ]},
+    { date:"28 ИЮНЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-124.95, cash:1 },
+      { logo:"🍞", bg:"#F2F2F7", name:"Манго", cat:"Продукты", sum:-340, cash:3 }
+    ]},
+    { date:"25 ИЮНЯ", items:[
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-550, cash:5 },
+      { logo:"🚌", bg:"#2196F3", name:"Busfor.ru", cat:"Транспорт", sum:-1500, cash:15 }
+    ]},
+    { date:"21 ИЮНЯ", items:[
+      { logo:"🍺", bg:"#F2F2F7", name:"Разливной", cat:"Кафе и рестораны", sum:-1231.37, cash:12 },
+      { logo:"⛽", bg:"#F2F2F7", name:"Газпромнефть", cat:"АЗС", sum:-1000.75, cash:10 }
+    ]},
+    { date:"18 ИЮНЯ", items:[
+      { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:23000 },
+      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
+    ]},
+    { date:"14 ИЮНЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-1404.03, cash:14 },
+     { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-190.97, cash:1 }
+    ]},
+    { date:"10 ИЮНЯ", items:[
+      { logo:"✅", bg:"#2BB673", name:"Пополнение из другого...", cat:"Переводы · СБП · Сбербанк", sum:1000, note:"Запрос денежных средств Me2Me" },
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-190.97, cash:1 }
+    ]},
+    { date:"06 ИЮНЯ", items:[
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-139.98, cash:1 },
+      { logo:"🍞", bg:"#F2F2F7", name:"Манго", cat:"Продукты", sum:-340, cash:3 }
+    ]},
+    { date:"03 ИЮНЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 },
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-190.97, cash:1 }
+    ]},
+    { date:"30 МАЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"IP SUKHACHEV", cat:"Фастфуд", sum:-1830, cash:54 },
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-290 }
+    ]},
+    { date:"26 МАЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-600, cash:6 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"22 МАЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"KRESTOVSKAYA", cat:"Фастфуд", sum:-1210, cash:36 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1200, cash:12 }
+    ]},
+    { date:"18 МАЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1300, cash:13 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 7", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"14 МАЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-350, cash:3 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-400, cash:4 }
+    ]},
+    { date:"10 МАЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-700, cash:7 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1800, cash:90 }
+    ]},
+    { date:"06 МАЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-990, cash:27 },
+      { logo:"🍔", bg:"#9C27B0", name:"JET SET.", cat:"Прочие расходы", sum:-600 }
+    ]},
+    { date:"02 МАЯ", items:[
+      { logo:"☕", bg:"#F2F2F7", name:"Сначала кофе", cat:"Фастфуд", sum:-260, cash:6 },
+      { logo:"🛒", bg:"#8BC34A", name:"MF VZLYOTNAYA", cat:"Продукты", sum:-373.98, cash:3 }
+    ]},
+    { date:"27 АПРЕЛЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-139.98, cash:1 }
+    ]},
+    { date:"23 АПРЕЛЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-407.18, cash:4 },
+      { logo:"🍞", bg:"#F2F2F7", name:"Манго", cat:"Продукты", sum:-340, cash:3 }
+    ]},
+    { date:"19 АПРЕЛЯ", items:[
+      { logo:"🛍", bg:"#9C27B0", name:"OZON", cat:"Маркетплейсы", sum:-2190, cash:11 },
+      { logo:"📷", bg:"#E91E63", name:"FOTOKOPISTOPKADR", cat:"Хобби", sum:-370, cash:15 }
+    ]},
+    { date:"15 АПРЕЛЯ", items:[
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-50 },
+      { logo:"🚌", bg:"#2196F3", name:"Транспорт", cat:"Транспорт", sum:-100, cash:1 }
+    ]},
+    { date:"11 АПРЕЛЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-190.97, cash:1 },
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-124.95, cash:1 }
+    ]},
+    { date:"07 АПРЕЛЯ", items:[
+      { logo:"🍺", bg:"#F2F2F7", name:"Разливной", cat:"Кафе и рестораны", sum:-1231.37, cash:12 },
+      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
+    ]},
+    { date:"03 АПРЕЛЯ", items:[
+      { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:23000 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-185.98, cash:1 }
+    ]},
+    { date:"29 МАРТА", items:[
+     { logo:"🍔", bg:"#9C27B0", name:"IP SUKHACHEV", cat:"Фастфуд", sum:-1830, cash:54 },
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 }
+    ]},
+    { date:"25 МАРТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-600, cash:6 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"21 МАРТА", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"KRESTOVSKAYA", cat:"Фастфуд", sum:-1210, cash:36 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1200, cash:12 }
+    ]},
+    { date:"17 МАРТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1300, cash:13 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 7", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"13 МАРТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-350, cash:3 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-400, cash:4 }
+    ]},
+    { date:"09 МАРТА", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-700, cash:7 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1800, cash:90 }
+    ]},
+    { date:"05 МАРТА", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-990, cash:27 },
+      { logo:"🍔", bg:"#9C27B0", name:"JET SET.", cat:"Прочие расходы", sum:-600 }
+    ]},
+    { date:"01 МАРТА", items:[
+      { logo:"☕", bg:"#F2F2F7", name:"Сначала кофе", cat:"Фастфуд", sum:-260, cash:6 },
+      { logo:"🛒", bg:"#8BC34A", name:"MF VZLYOTNAYA", cat:"Продукты", sum:-373.98, cash:3 }
+    ]},
+    { date:"25 ФЕВРАЛЯ", items:[
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-414.90, cash:4 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-139.98, cash:1 }
+    ]},
+    { date:"21 ФЕВРАЛЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-407.18, cash:4 },
+      { logo:"🍞", bg:"#F2F2F7", name:"Манго", cat:"Продукты", sum:-340, cash:3 }
+    ]},
+    { date:"17 ФЕВРАЛЯ", items:[
+      { logo:"🛍", bg:"#9C27B0", name:"OZON", cat:"Маркетплейсы", sum:-2190, cash:11 },
+      { logo:"📷", bg:"#E91E63", name:"FOTOKOPISTOPKADR", cat:"Хобби", sum:-370, cash:15 }
+    ]},
+    { date:"13 ФЕВРАЛЯ", items:[
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-50 },
+      { logo:"🚌", bg:"#2196F3", name:"Транспорт", cat:"Транспорт", sum:-100, cash:1 }
+    ]},
+    { date:"09 ФЕВРАЛЯ", items:[
+      { logo:"🛒", bg:"#E53935", name:"Верный", cat:"Продукты", sum:-190.97, cash:1 },
+      { logo:"🛒", bg:"#FFC107", name:"Семишагофф", cat:"Продукты", sum:-124.95, cash:1 }
+    ]},
+    { date:"05 ФЕВРАЛЯ", items:[
+      { logo:"🍺", bg:"#F2F2F7", name:"Разливной", cat:"Кафе и рестораны", sum:-1231.37, cash:12 },
+      { logo:"☕", bg:"#F2F2F7", name:"Все дома", cat:"Фастфуд", sum:-65 }
+    ]},
+    { date:"01 ФЕВРАЛЯ", items:[
+      { logo:"💳", bg:"#D6F5E3", name:"Зачисление средств", cat:"Пополнения", sum:23000 },
+      { logo:"🛒", bg:"#F57C00", name:"Дикси", cat:"Продукты", sum:-185.98, cash:1 }
+    ]},
+    { date:"28 ЯНВАРЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"IP SUKHACHEV", cat:"Фастфуд", sum:-1830, cash:54 },
+      { logo:"🚬", bg:"#F57C00", name:"Табак", cat:"Табак", sum:-290 }
+    ]},
+    { date:"24 ЯНВАРЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-600, cash:6 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-290, cash:6 }
+    ]},
+    { date:"20 ЯНВАРЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"KRESTOVSKAYA", cat:"Фастфуд", sum:-1210, cash:36 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1200, cash:12 }
+    ]},
+    { date:"16 ЯНВАРЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1300, cash:13 },
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 7", cat:"Фастфуд", sum:-290, cash:6 }
+     ]},
+    { date:"12 ЯНВАРЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-350, cash:3 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-400, cash:4 }
+    ]},
+    { date:"08 ЯНВАРЯ", items:[
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-700, cash:7 },
+      { logo:"🏖", bg:"#FF80AB", name:"Диво Остров", cat:"Активный отдых", sum:-1800, cash:90 }
+    ]},
+    { date:"04 ЯНВАРЯ", items:[
+      { logo:"🍔", bg:"#9C27B0", name:"LOTOK 2", cat:"Фастфуд", sum:-990, cash:27 },
+      { logo:"🍔", bg:"#9C27B0", name:"JET SET.", cat:"Прочие расходы", sum:-600 }
+    ]},
+    { date:"02 ЯНВАРЯ", items:[
+      { logo:"☕", bg:"#F2F2F7", name:"Сначала кофе", cat:"Фастфуд", sum:-260, cash:6 },
+      { logo:"🛒", bg:"#8BC34A", name:"MF VZLYOTNAYA", cat:"Продукты", sum:-373.98, cash:3 }
+    ]}
   ]
 };
 // ================================================
 
 function fmt(n, dec) {
-  dec = dec === undefined ? 2 : dec;
+  dec = (dec === undefined) ? 2 : dec;
   return n.toLocaleString('ru-RU', { minimumFractionDigits:dec, maximumFractionDigits:dec }) + ' ₽';
 }
 
@@ -578,10 +889,8 @@ function render() {
   document.getElementById('userName').textContent = DATA.userName;
   document.getElementById('mainBalance').textContent = fmt(DATA.mainBalance);
   document.getElementById('mirBalance').textContent = fmt(DATA.mirBalance);
-  document.getElementById('creditTotal').textContent = fmt(DATA.creditTotal);
-  document.getElementById('creditAmount').textContent = fmt(DATA.creditTotal);
-  document.getElementById('paidAmount').textContent = fmt(DATA.paidAmount);
-  document.getElementById('nextPayment').textContent = DATA.nextPaymentDate + ' — ' + fmt(DATA.nextPaymentSum, 0);
+  document.getElementById('creditTotal').textContent = fmt(DATA.creditTotal, 0);
+  document.getElementById('creditAmount').textContent = fmt(DATA.creditTotal, 0);
   document.getElementById('accountBalance').textContent = fmt(DATA.mainBalance);
   document.getElementById('topUpBtn').textContent = 'Пополнить на ' + fmt(DATA.topUpAmount);
 
@@ -601,29 +910,28 @@ function render() {
         <div style="font-size:16px;font-weight:700;">${fmt(DATA.paymentSum, 0)} <span style="color:#c7c7cc;">⌄</span></div>
       </div>
       <div class="det" style="display:none;margin-top:10px;">
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Основной долг</span><span style="color:#1c1c1e;">0 ₽</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Проценты</span><span style="color:#1c1c1e;">${fmt(DATA.paymentSum, 0)}</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Основной долг</span><span style="color:#1c1c1e;">${fmt(p.principal, 0)}</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Проценты</span><span style="color:#1c1c1e;">${fmt(p.interest, 0)}</span></div>
         <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Статус</span><span style="color:${p.paid ? '#34c759' : '#8e8e93'};font-weight:600;">${p.paid ? 'Оплачен' : 'Ожидается'}</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#8e8e93;"><span>Остаток долга</span><span style="color:#1c1c1e;">${fmt(DATA.creditTotal)}</span></div>
       </div>
     </div>
   `).join('');
 
   // История
   document.getElementById('historyList').innerHTML = DATA.history.map(g => `
-    <div style="padding:14px 16px 6px;font-size:13px;color:#8e8e93;letter-spacing:0.3px;">${g.date}</div>
-    <div style="background:#fff;margin:0 16px 14px;border-radius:16px;overflow:hidden;">
+    <div class="date-label">${g.date}</div>
+    <div class="tx-list">
       ${g.items.map(tx => `
-        <div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-bottom:1px solid #f2f2f7;">
-          <div style="width:44px;height:44px;border-radius:50%;background:${tx.bg};display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;color:${tx.bg === '#EF3124' ? '#fff' : (tx.bg === '#1B3A6B' ? '#fff' : '#1c1c1e')};">${tx.logo}</div>
-          <div style="flex:1;min-width:0;">
-            <div style="font-size:16px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${tx.name}</div>
-            <div style="font-size:13px;color:#8e8e93;margin-top:2px;">${tx.cat}</div>
-            ${tx.note ? `<div style="margin-top:6px;padding:6px 10px;background:#f2f2f7;border-radius:10px;font-size:13px;display:inline-block;">${tx.note}</div>` : ''}
+        <div class="tx">
+          <div class="logo" style="background:${tx.bg};color:${(tx.bg === '#EF3124'  tx.bg === '#1B3A6B'  tx.bg === '#000'  tx.bg === '#B71C1C'  tx.bg === '#2E7D32'  tx.bg === '#E53935'  tx.bg === '#9C27B0'  tx.bg === '#2196F3'  tx.bg === '#FF80AB'  tx.bg === '#4CAF50'  tx.bg === '#FFC107' || tx.bg === '#F57C00') ? '#fff' : '#1c1c1e'};">${tx.logo}</div>
+          <div class="info">
+            <div class="name">${tx.name}</div>
+            <div class="cat">${tx.cat}</div>
+            ${tx.note ? <div class="note">${tx.note}</div> : ''}
           </div>
-          <div style="text-align:right;flex-shrink:0;">
-            <div style="font-size:16px;font-weight:600;color:${tx.sum > 0 ? '#34c759' : '#000'};">${tx.sum > 0 ? '+' : ''}${tx.sum.toLocaleString('ru-RU')} ₽</div>
-            ${tx.cash ? `<div style="font-size:13px;color:#34c759;margin-top:2px;">+${tx.cash} ₽</div>` : ''}
+          <div class="right">
+            <div class="sum ${tx.sum > 0 ? 'plus' : ''}">${tx.sum > 0 ? '+' : ''}${tx.sum.toLocaleString('ru-RU')} ₽</div>
+            ${tx.cash ? <div class="cash plus">+${tx.cash} ₽</div> : ''}
           </div>
         </div>
       `).join('')}
@@ -642,8 +950,6 @@ function goTo(page) {
 
 function topUp() {
   DATA.mainBalance += DATA.topUpAmount;
-  DATA.paidAmount += DATA.topUpAmount;
-  DATA.creditTotal -= DATA.topUpAmount;
   DATA.paidCount += 1;
   render();
   alert('Счёт пополнен на ' + fmt(DATA.topUpAmount));
@@ -657,7 +963,6 @@ document.querySelectorAll('.filter').forEach(f => {
   });
 });
 
-document.querySelectorAll('.det').forEach(d => d.style.display = 'none');
 const style = document.createElement('style');
 style.textContent = '.det.open{display:block !important;}';
 document.head.appendChild(style);
